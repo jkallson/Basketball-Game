@@ -1,13 +1,14 @@
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class failiSisseLugeja {
     private String tiim1;
     private String tiim2;
     //listid, kus hoian kõiki andmeid mängijate kohta
-    private ArrayList<String> tiim1List = new ArrayList<>();
-    private ArrayList<String> tiim2List = new ArrayList<>();
+    private ArrayList<List> tiim1List = new ArrayList<>();
+    private ArrayList<List> tiim2List = new ArrayList<>();
     //listid, kus hoian ainult mängijate nimesid, et kasutaja saaks valida algviisiku jne
     private ArrayList<String> tiim1MängijateList = new ArrayList<>();
     private ArrayList<String> tiim2MängijateList = new ArrayList<>();
@@ -20,11 +21,11 @@ public class failiSisseLugeja {
         return tiim2MängijateList;
     }
 
-    public ArrayList<String> getTiim1List() {
+    public ArrayList<List> getTiim1List() {
         return tiim1List;
     }
 
-    public ArrayList<String> getTiim2List() {
+    public ArrayList<List> getTiim2List() {
         return tiim2List;
     }
 
@@ -42,9 +43,11 @@ public class failiSisseLugeja {
             while (sc.hasNextLine()) {
                 String rida = sc.nextLine();
                 String[] tükid = rida.split(",");
+                ArrayList<String> abi = new ArrayList<>();
                 for (int i = 0; i < tükid.length; i++) {
-                    tiim1List.add(tükid[i]);
+                    abi.add(tükid[i]);
                 }
+                tiim1List.add(abi);
                 tiim1MängijateList.add(tükid[0]);
             }
         }
@@ -53,9 +56,11 @@ public class failiSisseLugeja {
             while (sc.hasNextLine()) {
                 String rida = sc.nextLine();
                 String[] tükid = rida.split(",");
+                ArrayList<String> abi = new ArrayList<>();
                 for (int i = 0; i < tükid.length; i++) {
-                    tiim2List.add(tükid[i]);
+                    abi.add(tükid[i]);
                 }
+                tiim2List.add(abi);
                 tiim2MängijateList.add(tükid[0]);
             }
         }
