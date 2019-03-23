@@ -36,7 +36,7 @@ public class Mäng {
         int tiim2Skoor = 0;
         Random tiimideIndex = new Random();
         //for tsükkel visete sooritamiseks
-        for (int i = 0; i < 72; i++) {
+        for (int i = 0; i < 92; i++) {
             //int viskaja valimiseks
             int viskaja1 = tiimideIndex.nextInt(5);
             //eelnevalt saadud intiga moodustan viskaja stringi
@@ -51,6 +51,16 @@ public class Mäng {
             String valitudViskaja2 = tiim2algViisik.get(viskaja2);
             int viskaja2Tabavus = tiimideIndex.nextInt(100);
             int viskaja2ViskeKaugus = tiimideIndex.nextInt(2) + 1;
+
+            //veerandajad
+            int veerandAjad = 1;
+            if(i == 23 || i == 46 || i == 69){
+                System.out.println(veerandAjad+". veerandaeg. Skoor: " + tiim1 + " " + tiim1Skoor + ":" + tiim2Skoor + " " + tiim2);
+                TimeUnit.SECONDS.sleep(5);
+                veerandAjad++;
+
+            }
+
 
             //for tsükkel esimese tiimi viske sooritamiseks
 
@@ -103,6 +113,7 @@ public class Mäng {
             }
             TimeUnit.SECONDS.sleep(2);
         }
+        System.out.println("Mäng läbi! Lõppseis:  " + tiim1 + " " + tiim1Skoor + ":" + tiim2Skoor + " " + tiim2);
     }
 }
 

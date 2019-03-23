@@ -19,7 +19,7 @@ public class MänguAbi {
         ArrayList<String> tiim2Mängijad = tiimid.getTiim2MängijateList();
 
         System.out.println("Esimese tiimi mängijad on: "+tiim1Mängijad);
-        System.out.println("teise tiimi mängijad on: "+tiim2Mängijad);
+        System.out.println("Teise tiimi mängijad on: "+tiim2Mängijad);
 
         //küsin kasutajalt soovitud algviisikuid
         System.out.println("Sisesta esimese tiimi algviisik(index ja koma vahele nt: 0,2): ");
