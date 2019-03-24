@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class Mäng {
@@ -34,6 +32,9 @@ public class Mäng {
     public void liveMäng() throws InterruptedException {
         int tiim1Skoor = 0;
         int tiim2Skoor = 0;
+        Map<String,Integer> parimad1 = new HashMap<>();
+        Map<String,Integer> parimad2 = new HashMap<>();
+        int veerandAjad = 0;
         Random tiimideIndex = new Random();
         //for tsükkel visete sooritamiseks
         for (int i = 0; i < 92; i++) {
@@ -53,11 +54,14 @@ public class Mäng {
             int viskaja2ViskeKaugus = tiimideIndex.nextInt(2) + 1;
 
             //veerandajad
-            int veerandAjad = 1;
             if(i == 23 || i == 46 || i == 69){
-                System.out.println(veerandAjad+". veerandaeg. Skoor: " + tiim1 + " " + tiim1Skoor + ":" + tiim2Skoor + " " + tiim2);
-                TimeUnit.SECONDS.sleep(5);
                 veerandAjad++;
+                System.out.println();
+                System.out.println(veerandAjad+". veerandaja lõpp. Skoor: " + tiim1 + " " + tiim1Skoor + ":" + tiim2Skoor + " " + tiim2);
+                System.out.println(tiim1 + "i mängijate statistika: " + Arrays.toString(parimad1.entrySet().toArray()));
+                System.out.println(tiim2 + "i mängijate statistika: " + Arrays.toString(parimad2.entrySet().toArray()));
+                System.out.println();
+                TimeUnit.SECONDS.sleep(5);
 
             }
 
@@ -72,6 +76,12 @@ public class Mäng {
                         if (viskaja1Tabavus < Integer.parseInt(mängija.get(viskaja1ViskeKaugus))) {
                             tiim1Skoor += 3;
                             System.out.println(valitudViskaja1 + " viskas kolmest. Vise tabab! Skoor: " + tiim1 + " " + tiim1Skoor + ":" + tiim2Skoor + " " + tiim2);
+                            if (parimad1.containsKey(valitudViskaja1)) {
+                                parimad1.put(valitudViskaja1, parimad1.get(valitudViskaja1)+3);
+                            }
+                            else {
+                                parimad1.put(valitudViskaja1, 3);
+                            }
                         } else {
                             System.out.println(valitudViskaja1 + " viskas kolmest. Vise ei taba... Skoor: " + tiim1 + " " + tiim1Skoor + ":" + tiim2Skoor + " " + tiim2);
                         }
@@ -79,6 +89,12 @@ public class Mäng {
                         if (viskaja1Tabavus < Integer.parseInt(mängija.get(viskaja1ViskeKaugus))) {
                             tiim1Skoor += 2;
                             System.out.println(valitudViskaja1 + " viskas kahest. Vise tabab! Skoor: " + tiim1 + " " + tiim1Skoor + ":" + tiim2Skoor + " " + tiim2);
+                            if (parimad1.containsKey(valitudViskaja1)) {
+                                parimad1.put(valitudViskaja1, parimad1.get(valitudViskaja1)+2);
+                            }
+                            else {
+                                parimad1.put(valitudViskaja1, 2);
+                            }
                         } else {
                             System.out.println(valitudViskaja1 + " viskas kahest. Vise ei taba... Skoor: " + tiim1 + " " + tiim1Skoor + ":" + tiim2Skoor + " " + tiim2);
                         }
@@ -86,7 +102,7 @@ public class Mäng {
                     break;
                 }
             }
-            TimeUnit.SECONDS.sleep(2);
+           TimeUnit.SECONDS.sleep(2);
 
             //for tsükkel teise tiimi viske sooritamiseks
             for (int k = 0; k < tiim2MängijadViskeProtsendiga.size(); k++) {
@@ -97,6 +113,12 @@ public class Mäng {
                         if (viskaja2Tabavus < Integer.parseInt(mängija.get(viskaja2ViskeKaugus))) {
                             tiim2Skoor += 3;
                             System.out.println(valitudViskaja2 + " viskas kolmest. Vise tabab! Skoor: " + tiim1 + " " + tiim1Skoor + ":" + tiim2Skoor + " " + tiim2);
+                            if (parimad2.containsKey(valitudViskaja2)) {
+                                parimad2.put(valitudViskaja2, parimad2.get(valitudViskaja2)+3);
+                            }
+                            else {
+                                parimad2.put(valitudViskaja2, 3);
+                            }
                         } else {
                             System.out.println(valitudViskaja2 + " viskas kolmest. Vise ei taba... Skoor: " + tiim1 + " " + tiim1Skoor + ":" + tiim2Skoor + " " + tiim2);
                         }
@@ -104,6 +126,12 @@ public class Mäng {
                         if (viskaja2Tabavus < Integer.parseInt(mängija.get(viskaja2ViskeKaugus))) {
                             tiim2Skoor += 2;
                             System.out.println(valitudViskaja2 + " viskas kahest. Vise tabab! Skoor: " + tiim1 + " " + tiim1Skoor + ":" + tiim2Skoor + " " + tiim2);
+                            if (parimad2.containsKey(valitudViskaja2)) {
+                                parimad2.put(valitudViskaja2, parimad2.get(valitudViskaja2)+2);
+                            }
+                            else {
+                                parimad2.put(valitudViskaja2, 2);
+                            }
                         } else {
                             System.out.println(valitudViskaja2 + " viskas kahest. Vise ei taba... Skoor: " + tiim1 + " " + tiim1Skoor + ":" + tiim2Skoor + " " + tiim2);
                         }
@@ -113,7 +141,18 @@ public class Mäng {
             }
             TimeUnit.SECONDS.sleep(2);
         }
+        System.out.println();
         System.out.println("Mäng läbi! Lõppseis:  " + tiim1 + " " + tiim1Skoor + ":" + tiim2Skoor + " " + tiim2);
+        if (tiim1Skoor > tiim2Skoor) {
+            System.out.println();
+            System.out.print("Mängu parim mängija oli: " + parimad1.entrySet().stream().max((entry1, entry2) -> entry1.getValue() > entry2.getValue() ? 1 : -1).get().getKey() + ", ");
+            System.out.println(parimad1.get(parimad1.entrySet().stream().max((entry1, entry2) -> entry1.getValue() > entry2.getValue() ? 1 : -1).get().getKey()) + " punktiga.");
+        }
+        else {
+            System.out.println();
+            System.out.print("Mängu parim mängija oli: " + parimad2.entrySet().stream().max((entry1, entry2) -> entry1.getValue() > entry2.getValue() ? 1 : -1).get().getKey() + ", ");
+            System.out.println(parimad2.get(parimad2.entrySet().stream().max((entry1, entry2) -> entry1.getValue() > entry2.getValue() ? 1 : -1).get().getKey()) + " punktiga.");
+        }
     }
 }
 
