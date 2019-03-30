@@ -41,6 +41,23 @@ public class MänguAbi {
         ArrayList<List> tiim1MängijadViskeProtsendiga = tiimid.getTiim1List();
         ArrayList<List> tiim2MängijadViskeProtsendiga = tiimid.getTiim2List();
 
+        Scanner eelis = new Scanner(System.in);
+        System.out.println("Soovil sisesta koduväljaku boonus 10% piires. NT: (5,0)");
+        String eelised = eelis.nextLine();
+        String[] jupatsid = eelised.split(",");
+
+        int tiim1Eelis = 0;
+        int tiim2Eelis = 0;
+
+        if(Integer.parseInt(jupatsid[0]) <= 10){
+            tiim1Eelis = Integer.parseInt(jupatsid[0]);
+        }
+
+        if(Integer.parseInt(jupatsid[1]) <= 10){
+            tiim2Eelis = Integer.parseInt(jupatsid[1]);
+        }
+
+
         System.out.println("Esimese tiimi algviisik on "+tiim1AlgViisikList);
         System.out.println("Esimese tiimi vahetusmängijad on "+tiim1VahetusMängijad);
 
@@ -49,7 +66,7 @@ public class MänguAbi {
         System.out.println("Head mängu!!!!!!!!!!!!");
 
         //loon mängu
-        Mäng mäng = new Mäng(tiim1Mängijad,tiim1AlgViisikList,tiim1VahetusMängijad,tiim1MängijadViskeProtsendiga,tiim2Mängijad,tiim2AlgViisikList,tiim2VahetusMängijad,tiim2MängijadViskeProtsendiga,tiim1.replace(".txt",""),tiim2.replace(".txt",""));
+        Mäng mäng = new Mäng(tiim1Mängijad,tiim1AlgViisikList,tiim1VahetusMängijad,tiim1MängijadViskeProtsendiga,tiim2Mängijad,tiim2AlgViisikList,tiim2VahetusMängijad,tiim2MängijadViskeProtsendiga,tiim1.replace(".txt",""),tiim2.replace(".txt",""),tiim1Eelis,tiim2Eelis);
         mäng.liveMäng();
     }
 }
