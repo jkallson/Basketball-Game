@@ -59,6 +59,48 @@ public class Mäng {
             int viskaja2Tabavus = tiimideIndex.nextInt(100- tiim2Eelis)+tiim2Eelis;
             int viskaja2ViskeKaugus = tiimideIndex.nextInt(2) + 1;
 
+            //väsimus
+            for (int j = 0; j < tiim1MängijadViskeProtsendiga.size() ; j++) {
+                String a = (String) tiim1MängijadViskeProtsendiga.get(j).get(3);
+                int b = Integer.parseInt(a)-1;
+                String c = Integer.toString(b);
+                tiim1MängijadViskeProtsendiga.get(j).set(3, c);
+                if (b == 60) {
+                    System.out.println("\u001B[31;1m" + tiim1MängijadViskeProtsendiga.get(j).get(0) + " on veidi väsinud. (-2% visketabamus)" + "\u001B[0m");
+                    String väsimus1a = (String) tiim1MängijadViskeProtsendiga.get(j).get(2);
+                    int väsimus1b = Integer.parseInt(väsimus1a)-2;
+                    String väsimus1c = Integer.toString(väsimus1b);
+                    tiim1MängijadViskeProtsendiga.get(j).set(2, väsimus1c);
+                    String väsimus12a = (String) tiim1MängijadViskeProtsendiga.get(j).get(1);
+                    int väsimus12b = Integer.parseInt(väsimus12a)-2;
+                    String väsimus12c = Integer.toString(väsimus12b);
+                    tiim1MängijadViskeProtsendiga.get(j).set(1, väsimus12c);
+                }
+                if (b == 40) {
+                    System.out.println("\u001B[31;1m" + tiim1MängijadViskeProtsendiga.get(j).get(0) + " on üsna väsinud. (-4% visketabamus)" + "\u001B[0m");
+                    String väsimus1a = (String) tiim1MängijadViskeProtsendiga.get(j).get(2);
+                    int väsimus1b = Integer.parseInt(väsimus1a)-2;
+                    String väsimus1c = Integer.toString(väsimus1b);
+                    tiim1MängijadViskeProtsendiga.get(j).set(2, väsimus1c);
+                    String väsimus12a = (String) tiim1MängijadViskeProtsendiga.get(j).get(1);
+                    int väsimus12b = Integer.parseInt(väsimus12a)-2;
+                    String väsimus12c = Integer.toString(väsimus12b);
+                    tiim1MängijadViskeProtsendiga.get(j).set(1, väsimus12c);
+                }
+                if (b == 20) {
+                    System.out.println("\u001B[31;1m" + tiim1MängijadViskeProtsendiga.get(j).get(0) + " on väga väsinud. Soovib vahetust. (-6% visketabamus)" + "\u001B[0m");
+                    String väsimus1a = (String) tiim1MängijadViskeProtsendiga.get(j).get(2);
+                    int väsimus1b = Integer.parseInt(väsimus1a)-2;
+                    String väsimus1c = Integer.toString(väsimus1b);
+                    tiim1MängijadViskeProtsendiga.get(j).set(2, väsimus1c);
+                    String väsimus12a = (String) tiim1MängijadViskeProtsendiga.get(j).get(1);
+                    int väsimus12b = Integer.parseInt(väsimus12a)-2;
+                    String väsimus12c = Integer.toString(väsimus12b);
+                    tiim1MängijadViskeProtsendiga.get(j).set(1, väsimus12c);
+                }
+            }
+
+
             //veerandajad
             if(i == 23 || i == 46 || i == 69){
                 veerandAjad++;
