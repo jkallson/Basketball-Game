@@ -183,7 +183,7 @@ public class Mäng {
                     break;
                 }
             }
-           //TimeUnit.SECONDS.sleep(2);
+           TimeUnit.SECONDS.sleep(2);
 
             //for tsükkel teise tiimi viske sooritamiseks
             for (int k = 0; k < tiim2MängijadViskeProtsendiga.size(); k++) {
@@ -220,7 +220,7 @@ public class Mäng {
                     break;
                 }
             }
-            //TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(2);
         }
         System.out.println();
         System.out.println("Mäng läbi! Lõppseis:  " + tiim1 + " " + tiim1Skoor + ":" + tiim2Skoor + " " + tiim2);
