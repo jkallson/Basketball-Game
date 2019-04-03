@@ -71,10 +71,7 @@ public class Mäng {
                 System.out.println("Vahetuste tegemiseks kirjutage \"vahetused\". (Kui ei soovi vahetusi teha vajuta ENTER)");
                 String vahetused = vahetuste_alustus.nextLine();
                 if(vahetused.equals("vahetused")) {
-                    Scanner tiimi_valik = new Scanner (System.in);
-                    System.out.println("Kummale meeskonnale tahate vahetust teha? (Kirjutada \"esimene\" või \"teine\"");
-                    String tiim = tiimi_valik.nextLine();
-                    if(tiim.equals("esimene")){
+                        System.out.println("Vahetus esimesse tiimi: ");
                         System.out.println("Hetkel mängivad: "+tiim1algViisik);
                         System.out.println("Vahetusmängijad on: "+ tiim1VahetusMängijad);
                         Scanner mangija = new Scanner(System.in);
@@ -84,20 +81,20 @@ public class Mäng {
                         tiim1VahetusMängijad.add(tiim1algViisik.get(Integer.parseInt(jupid[0])));
                         tiim1algViisik.set(Integer.parseInt(jupid[0]),tiim1VahetusMängijad.get(Integer.parseInt(jupid[1])));
                         tiim1VahetusMängijad.remove(Integer.parseInt(jupid[1]));
-                        System.out.println("Vahetus on tehtud! Jätkame mänguga!");
-                    }
-                    if(tiim.equals("teine")){
+                        System.out.println("Vahetus on tehtud!");
+
+                        System.out.println("Vahetus teise tiimi: ");
                         System.out.println("Hetkel mängivad: "+tiim2algViisik);
                         System.out.println("Vahetusmängijad on: "+ tiim2VahetusMängijad);
-                        Scanner mangija = new Scanner(System.in);
+                        Scanner mangija2 = new Scanner(System.in);
                         System.out.println("Kirjuta mängija indeks keda tahad välja vahetada ja kellega asendada ja tema indeks, eralda komaga. NT: (2,2)");
-                        String mangijad = mangija.nextLine();
-                        String[] jupid = mangijad.split(",");
-                        tiim2VahetusMängijad.add(tiim2algViisik.get(Integer.parseInt(jupid[0])));
-                        tiim2algViisik.set(Integer.parseInt(jupid[0]),tiim2VahetusMängijad.get(Integer.parseInt(jupid[1])));
-                        tiim2VahetusMängijad.remove(Integer.parseInt(jupid[1]));
+                        String mangijad2 = mangija2.nextLine();
+                        String[] jupid2 = mangijad2.split(",");
+                        tiim2VahetusMängijad.add(tiim2algViisik.get(Integer.parseInt(jupid2[0])));
+                        tiim2algViisik.set(Integer.parseInt(jupid2[0]),tiim2VahetusMängijad.get(Integer.parseInt(jupid2[1])));
+                        tiim2VahetusMängijad.remove(Integer.parseInt(jupid2[1]));
                         System.out.println("Vahetus on tehtud! Jätkame mänguga!");
-                    }
+
                 }
                 Scanner Jätka = new Scanner(System.in);
                 System.out.println("Jätkamiseks vajuta ENTER");
@@ -144,7 +141,7 @@ public class Mäng {
                     break;
                 }
             }
-           TimeUnit.SECONDS.sleep(2);
+           //TimeUnit.SECONDS.sleep(2);
 
             //for tsükkel teise tiimi viske sooritamiseks
             for (int k = 0; k < tiim2MängijadViskeProtsendiga.size(); k++) {
@@ -181,7 +178,7 @@ public class Mäng {
                     break;
                 }
             }
-            TimeUnit.SECONDS.sleep(2);
+            //TimeUnit.SECONDS.sleep(2);
         }
         System.out.println();
         System.out.println("Mäng läbi! Lõppseis:  " + tiim1 + " " + tiim1Skoor + ":" + tiim2Skoor + " " + tiim2);
