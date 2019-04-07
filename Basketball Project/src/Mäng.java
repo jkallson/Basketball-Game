@@ -117,25 +117,40 @@ public class Mäng {
                         System.out.println("Hetkel mängivad: "+tiim1algViisik);
                         System.out.println("Vahetusmängijad on: "+ tiim1VahetusMängijad);
                         Scanner mangija = new Scanner(System.in);
-                        System.out.println("Kirjuta mängija indeks keda tahad välja vahetada ja kellega asendada ja tema indeks, eralda komaga. NT: (2,2)");
+                        System.out.println("Kirjuta mängija indeks keda tahad välja vahetada ja kellega asendada ja tema indeks, eralda komaga. NT: (2,2,0,1)");
+                        System.out.println("Kui siia tiimi ei soovi vahetust teha vajuta ENTER.");
                         String mangijad = mangija.nextLine();
                         String[] jupid = mangijad.split(",");
-                        tiim1VahetusMängijad.add(tiim1algViisik.get(Integer.parseInt(jupid[0])));
-                        tiim1algViisik.set(Integer.parseInt(jupid[0]),tiim1VahetusMängijad.get(Integer.parseInt(jupid[1])));
-                        tiim1VahetusMängijad.remove(Integer.parseInt(jupid[1]));
-                        System.out.println("Vahetus on tehtud!");
-
+                        if(mangijad.equals("")) {
+                            System.out.println("Vahetusi esimesse tiimi ei tehtud! ");
+                        }
+                        else{
+                            for (int j = 0; j < jupid.length; j = j + 2) {
+                                tiim1VahetusMängijad.add(tiim1algViisik.get(Integer.parseInt(jupid[j])));
+                                tiim1algViisik.set(Integer.parseInt(jupid[j]), tiim1VahetusMängijad.get(Integer.parseInt(jupid[j + 1])));
+                                tiim1VahetusMängijad.remove(Integer.parseInt(jupid[j + 1]));
+                                System.out.println("Vahetus on tehtud!");
+                            }
+                        }
                         System.out.println("Vahetus teise tiimi: ");
                         System.out.println("Hetkel mängivad: "+tiim2algViisik);
                         System.out.println("Vahetusmängijad on: "+ tiim2VahetusMängijad);
                         Scanner mangija2 = new Scanner(System.in);
-                        System.out.println("Kirjuta mängija indeks keda tahad välja vahetada ja kellega asendada ja tema indeks, eralda komaga. NT: (2,2)");
+                        System.out.println("Kirjuta mängija indeks keda tahad välja vahetada ja kellega asendada ja tema indeks, eralda komaga. NT: (2,2,0,1)");
+                        System.out.println("Kui siia tiimi ei soovi vahetust teha vajuta ENTER.");
                         String mangijad2 = mangija2.nextLine();
                         String[] jupid2 = mangijad2.split(",");
-                        tiim2VahetusMängijad.add(tiim2algViisik.get(Integer.parseInt(jupid2[0])));
-                        tiim2algViisik.set(Integer.parseInt(jupid2[0]),tiim2VahetusMängijad.get(Integer.parseInt(jupid2[1])));
-                        tiim2VahetusMängijad.remove(Integer.parseInt(jupid2[1]));
-                        System.out.println("Vahetus on tehtud! Jätkame mänguga!");
+                        if(mangijad2.equals("")) {
+                            System.out.println("Vahetusi teise tiimi ei tehtud! ");
+                        }
+                        else {
+                            for (int h = 0; h < jupid2.length; h = h + 2) {
+                                tiim2VahetusMängijad.add(tiim2algViisik.get(Integer.parseInt(jupid2[h])));
+                                tiim2algViisik.set(Integer.parseInt(jupid2[h]), tiim2VahetusMängijad.get(Integer.parseInt(jupid2[h + 1])));
+                                tiim2VahetusMängijad.remove(Integer.parseInt(jupid2[h]));
+                                System.out.println("Vahetus on tehtud!");
+                            }
+                        }
 
                 }
                 Scanner Jätka = new Scanner(System.in);
